@@ -1,0 +1,40 @@
+[gd_scene load_steps=7 format=3 uid="uid://b5g6bbya14yu3"]
+
+[ext_resource type="PackedScene" uid="uid://diqxc38m28scg" path="res://smooth_terrain.gltf" id="1_3v3w6"]
+[ext_resource type="Script" uid="uid://ca2advwsnpek" path="res://terrain.gd" id="2_s5rua"]
+[ext_resource type="Shader" uid="uid://cw1y3g8i50667" path="res://pom_foliage_4_layers.gdshader" id="3_1whj6"]
+[ext_resource type="Texture2D" uid="uid://d0fvup8r6qmts" path="res://ivy_dense_1K_color.png" id="4_s5rua"]
+[ext_resource type="Texture2D" uid="uid://cmyufohl3md4o" path="res://dead_leaves_1K_color.png" id="5_1whj6"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mwam3"]
+render_priority = 0
+shader = ExtResource("3_1whj6")
+shader_parameter/albedo1 = ExtResource("4_s5rua")
+shader_parameter/scale1 = Vector2(1, 1)
+shader_parameter/rotate1 = 0.0
+shader_parameter/offset1 = Vector2(0, 0)
+shader_parameter/albedo2 = ExtResource("4_s5rua")
+shader_parameter/depth2 = 0.05
+shader_parameter/scale2 = Vector2(1.5, 1.5)
+shader_parameter/rotate2 = 0.1705
+shader_parameter/offset2 = Vector2(0, 0)
+shader_parameter/shadow2 = 0.35
+shader_parameter/albedo3 = ExtResource("4_s5rua")
+shader_parameter/depth3 = 0.1
+shader_parameter/scale3 = Vector2(1.5, 1)
+shader_parameter/rotate3 = -0.099
+shader_parameter/offset3 = Vector2(0, 0)
+shader_parameter/shadow3 = 0.6
+shader_parameter/albedo4 = ExtResource("5_1whj6")
+shader_parameter/depth4 = 0.25
+shader_parameter/scale4 = Vector2(3, 3)
+shader_parameter/rotate4 = 0.0
+shader_parameter/offset4 = Vector2(0, 0)
+shader_parameter/shadow4 = 0.6
+shader_parameter/light_direction = Vector3(-0.3, -0.7, -0.6)
+
+[node name="smooth_terrain" instance=ExtResource("1_3v3w6")]
+script = ExtResource("2_s5rua")
+
+[node name="rock_003" parent="." index="0"]
+surface_material_override/0 = SubResource("ShaderMaterial_mwam3")

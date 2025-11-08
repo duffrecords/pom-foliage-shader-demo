@@ -1,0 +1,32 @@
+[gd_scene load_steps=7 format=3 uid="uid://cy3ennglei84"]
+
+[ext_resource type="PackedScene" uid="uid://snuv6e3ks1gg" path="res://terrain.tscn" id="1_0xm2m"]
+[ext_resource type="Script" uid="uid://b6oj6nd7gfvld" path="res://main.gd" id="1_h2yge"]
+[ext_resource type="PackedScene" uid="uid://b5g6bbya14yu3" path="res://smooth_terrain.tscn" id="3_h2yge"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_0xm2m"]
+
+[sub_resource type="Sky" id="Sky_h2yge"]
+sky_material = SubResource("ProceduralSkyMaterial_0xm2m")
+
+[sub_resource type="Environment" id="Environment_1bvp3"]
+background_mode = 2
+sky = SubResource("Sky_h2yge")
+
+[node name="Main" type="Node3D"]
+script = ExtResource("1_h2yge")
+
+[node name="terrain" parent="." instance=ExtResource("1_0xm2m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.5, -0.866025, 0, 0.866025, -0.5, 0, 2, 0)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 1, 2)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_1bvp3")
+
+[node name="smooth_terrain" parent="." instance=ExtResource("3_h2yge")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)

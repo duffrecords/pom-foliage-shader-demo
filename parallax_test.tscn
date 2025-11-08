@@ -1,0 +1,52 @@
+[gd_scene load_steps=7 format=3 uid="uid://s1ctukkeprfj"]
+
+[ext_resource type="Script" uid="uid://bf43jd6wygwmi" path="res://parallax_test.gd" id="1_e62ib"]
+[ext_resource type="Shader" uid="uid://cw1y3g8i50667" path="res://pom_foliage_4_layers.gdshader" id="1_j2haq"]
+[ext_resource type="Texture2D" uid="uid://d0fvup8r6qmts" path="res://ivy_dense_1K_color.png" id="3_7nuav"]
+[ext_resource type="Texture2D" uid="uid://cmyufohl3md4o" path="res://dead_leaves_1K_color.png" id="4_4r4ok"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_ag7ol"]
+size = Vector2(4, 4)
+subdivide_width = 3
+subdivide_depth = 3
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ivxdb"]
+render_priority = 0
+shader = ExtResource("1_j2haq")
+shader_parameter/albedo1 = ExtResource("3_7nuav")
+shader_parameter/scale1 = Vector2(1, 1)
+shader_parameter/rotate1 = 0.0
+shader_parameter/offset1 = Vector2(0, 0)
+shader_parameter/albedo2 = ExtResource("3_7nuav")
+shader_parameter/depth2 = 0.05
+shader_parameter/scale2 = Vector2(1.5, 1.5)
+shader_parameter/rotate2 = 0.1705
+shader_parameter/offset2 = Vector2(0, 0)
+shader_parameter/shadow2 = 0.25
+shader_parameter/albedo3 = ExtResource("3_7nuav")
+shader_parameter/depth3 = 0.1
+shader_parameter/scale3 = Vector2(1.5, 1)
+shader_parameter/rotate3 = -0.099
+shader_parameter/offset3 = Vector2(0, 0)
+shader_parameter/shadow3 = 0.25
+shader_parameter/albedo4 = ExtResource("4_4r4ok")
+shader_parameter/depth4 = 0.25
+shader_parameter/scale4 = Vector2(3, 3)
+shader_parameter/rotate4 = 0.0
+shader_parameter/offset4 = Vector2(0, 0)
+shader_parameter/shadow4 = 0.5
+shader_parameter/light_direction = Vector3(-0.3, -0.7, -0.6)
+
+[node name="ParallaxTest" type="Node3D"]
+script = ExtResource("1_e62ib")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 0, 0)
+mesh = SubResource("PlaneMesh_ag7ol")
+surface_material_override/0 = SubResource("ShaderMaterial_ivxdb")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.5, -0.866026, 0, 0.866026, 0.5, 0, 1, 0)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 1, 1)

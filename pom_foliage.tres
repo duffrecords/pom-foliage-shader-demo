@@ -1,0 +1,31 @@
+[gd_resource type="ShaderMaterial" load_steps=11 format=3 uid="uid://djwcr2chre2ti"]
+
+[ext_resource type="Shader" uid="uid://cw1y3g8i50667" path="res://pom_foliage_4_layers.gdshader" id="1_wvu1f"]
+[ext_resource type="Texture2D" uid="uid://cmyufohl3md4o" path="res://dead_leaves_1K_color.png" id="2_t0dp6"]
+[ext_resource type="Texture2D" uid="uid://dlkengluufi5" path="res://dead_leaves_1K_normal.png" id="3_s3owt"]
+[ext_resource type="Texture2D" uid="uid://1gnq30n0xfud" path="res://dead_leaves_1K_roughness.png" id="4_t0qn1"]
+[ext_resource type="Texture2D" uid="uid://bqrbsap8ym18l" path="res://ivy_sparse_1K_color.png" id="5_t0qn1"]
+[ext_resource type="Texture2D" uid="uid://d0fvup8r6qmts" path="res://ivy_dense_1K_color.png" id="5_ybtgs"]
+[ext_resource type="Texture2D" uid="uid://j355y17fhbai" path="res://ivy_dense_1K_normal.png" id="6_t1jlq"]
+[ext_resource type="Texture2D" uid="uid://c2iyovycvxk8w" path="res://ivy_sparse_1K_normal.png" id="6_ybtgs"]
+[ext_resource type="Texture2D" uid="uid://ds1y05n8e1njl" path="res://ivy_dense_1K_roughness.png" id="7_dmbag"]
+[ext_resource type="Texture2D" uid="uid://cmyuq77lxqhqt" path="res://ivy_sparse_1K_roughness.png" id="7_t1jlq"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_wvu1f")
+shader_parameter/top_albedo = ExtResource("5_ybtgs")
+shader_parameter/top_normal = ExtResource("6_t1jlq")
+shader_parameter/top_roughness = ExtResource("7_dmbag")
+shader_parameter/mid_albedo = ExtResource("5_t0qn1")
+shader_parameter/mid_normal = ExtResource("6_ybtgs")
+shader_parameter/mid_roughness = ExtResource("7_t1jlq")
+shader_parameter/mid_uv_scale = Vector2(2, 2)
+shader_parameter/mid_depth = 0.1
+shader_parameter/bottom_albedo = ExtResource("2_t0dp6")
+shader_parameter/bottom_normal = ExtResource("3_s3owt")
+shader_parameter/bottom_roughness = ExtResource("4_t0qn1")
+shader_parameter/bottom_uv_scale = Vector2(4, 4)
+shader_parameter/bottom_reflectivity = 0.0
+shader_parameter/depth = 0.2
+shader_parameter/light_direction = Vector3(-0.3, -0.7, -0.6)

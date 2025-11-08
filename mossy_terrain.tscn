@@ -1,0 +1,42 @@
+[gd_scene load_steps=9 format=3 uid="uid://u726y12aw4cq"]
+
+[ext_resource type="PackedScene" uid="uid://diqxc38m28scg" path="res://smooth_terrain.gltf" id="1_v6lu8"]
+[ext_resource type="Script" uid="uid://ca2advwsnpek" path="res://terrain.gd" id="2_cx5uc"]
+[ext_resource type="Shader" uid="uid://cw1y3g8i50667" path="res://pom_foliage_4_layers.gdshader" id="3_aqh40"]
+[ext_resource type="Texture2D" uid="uid://cwab6w7kqdu1c" path="res://moss1_1K_color.png" id="4_aqh40"]
+[ext_resource type="Texture2D" uid="uid://by4wbv4ntj6l2" path="res://moss2_1K_color.png" id="5_emln5"]
+[ext_resource type="Texture2D" uid="uid://cc85vsvn0tjv5" path="res://moss3_1K_color.png" id="6_ixh2h"]
+[ext_resource type="Texture2D" uid="uid://dp447sjvmhja0" path="res://moss4_1K_color.png" id="7_vvqbk"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_a43j8"]
+render_priority = 0
+shader = ExtResource("3_aqh40")
+shader_parameter/albedo1 = ExtResource("4_aqh40")
+shader_parameter/scale1 = Vector2(5, 5)
+shader_parameter/rotate1 = 0.0
+shader_parameter/offset1 = Vector2(0, 0)
+shader_parameter/albedo2 = ExtResource("5_emln5")
+shader_parameter/depth2 = 0.02
+shader_parameter/scale2 = Vector2(5, 5)
+shader_parameter/rotate2 = 0.0
+shader_parameter/offset2 = Vector2(0, 0)
+shader_parameter/shadow2 = 0.4
+shader_parameter/albedo3 = ExtResource("6_ixh2h")
+shader_parameter/depth3 = 0.04
+shader_parameter/scale3 = Vector2(4, 4)
+shader_parameter/rotate3 = 0.0
+shader_parameter/offset3 = Vector2(0, 0)
+shader_parameter/shadow3 = 0.4
+shader_parameter/albedo4 = ExtResource("7_vvqbk")
+shader_parameter/depth4 = 0.06
+shader_parameter/scale4 = Vector2(4, 4)
+shader_parameter/rotate4 = 0.0
+shader_parameter/offset4 = Vector2(0, 0)
+shader_parameter/shadow4 = 0.25
+shader_parameter/light_direction = Vector3(-0.3, -0.7, -0.6)
+
+[node name="mossy_terrain" instance=ExtResource("1_v6lu8")]
+script = ExtResource("2_cx5uc")
+
+[node name="rock_003" parent="." index="0"]
+surface_material_override/0 = SubResource("ShaderMaterial_a43j8")
